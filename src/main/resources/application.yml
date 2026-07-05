@@ -1,0 +1,23 @@
+server:
+  port: ${SERVER_PORT:8083}
+
+spring:
+  application:
+    name: notification-service
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+messaging:
+  order-events:
+    exchange: order.exchange
+    queue: order.notification.queue
+    routing-key: order.created
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
